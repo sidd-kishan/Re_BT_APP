@@ -39,3 +39,5 @@ I used [Uber APK signer](https://github.com/patrickfav/uber-apk-signer)
 ## check trace logs
 
 `frida-trace -U -i open -i strcmp -f com.lianhezhuli.btnotification`
+
+## frida-server needs to be restarted upon phone restart
