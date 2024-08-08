@@ -45,4 +45,7 @@ I used [Uber APK signer](https://github.com/patrickfav/uber-apk-signer)
 # Trace the frame send methods in java with frida-trace
 
 `frida-trace -U -j '*!*sendCAPC*' -f com.lianhezhuli.btnotification`
+
+bellow send frame?
+
 `frida-trace -U -j '*!*sendCaptureData*' -f com.lianhezhuli.btnotification`
