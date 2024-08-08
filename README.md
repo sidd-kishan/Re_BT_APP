@@ -41,3 +41,7 @@ I used [Uber APK signer](https://github.com/patrickfav/uber-apk-signer)
 `frida-trace -U -i open -i strcmp -f com.lianhezhuli.btnotification`
 
 ## frida-server needs to be restarted upon phone restart
+
+# Trace the frame send methods in java with frida-trace
+
+`frida-trace -U -j '*!*sendCAPC*' -f com.lianhezhuli.btnotification`
