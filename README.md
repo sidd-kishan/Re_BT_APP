@@ -49,3 +49,11 @@ I used [Uber APK signer](https://github.com/patrickfav/uber-apk-signer)
 bellow send frame?
 
 `frida-trace -U -j '*!*sendCaptureData*' -f com.lianhezhuli.btnotification`
+
+## to hook with scripts
+
+`frida -U -l privacy-hook.js -f com.lianhezhuli.btnotification`
+
+`frida -U -l camera_hook.js -f com.lianhezhuli.btnotification`
+
+`frida -U -l privacy-hook_2.js -f com.lianhezhuli.btnotification`
