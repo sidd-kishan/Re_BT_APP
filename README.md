@@ -52,8 +52,4 @@ bellow send frame?
 
 ## to hook with scripts
 
-`frida -U -l privacy-hook.js -f com.lianhezhuli.btnotification`
-
-`frida -U -l camera_hook.js -f com.lianhezhuli.btnotification`
-
-`frida -U -l privacy-hook_2.js -f com.lianhezhuli.btnotification`
+`frida -U -l privacy-view-hook.js -f com.lianhezhuli.btnotification`
