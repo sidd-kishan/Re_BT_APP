@@ -1,0 +1,108 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.luck.picture.lib;
+
+public static final class R.string {
+    public static final int abc_action_bar_home_description = 2131755008;
+    public static final int abc_action_bar_up_description = 2131755009;
+    public static final int abc_action_menu_overflow_description = 2131755010;
+    public static final int abc_action_mode_done = 2131755011;
+    public static final int abc_activity_chooser_view_see_all = 2131755012;
+    public static final int abc_activitychooserview_choose_application = 2131755013;
+    public static final int abc_capital_off = 2131755014;
+    public static final int abc_capital_on = 2131755015;
+    public static final int abc_menu_alt_shortcut_label = 2131755016;
+    public static final int abc_menu_ctrl_shortcut_label = 2131755017;
+    public static final int abc_menu_delete_shortcut_label = 2131755018;
+    public static final int abc_menu_enter_shortcut_label = 2131755019;
+    public static final int abc_menu_function_shortcut_label = 2131755020;
+    public static final int abc_menu_meta_shortcut_label = 2131755021;
+    public static final int abc_menu_shift_shortcut_label = 2131755022;
+    public static final int abc_menu_space_shortcut_label = 2131755023;
+    public static final int abc_menu_sym_shortcut_label = 2131755024;
+    public static final int abc_prepend_shortcut_label = 2131755025;
+    public static final int abc_search_hint = 2131755026;
+    public static final int abc_searchview_description_clear = 2131755027;
+    public static final int abc_searchview_description_query = 2131755028;
+    public static final int abc_searchview_description_search = 2131755029;
+    public static final int abc_searchview_description_submit = 2131755030;
+    public static final int abc_searchview_description_voice = 2131755031;
+    public static final int abc_shareactionprovider_share_with = 2131755032;
+    public static final int abc_shareactionprovider_share_with_application = 2131755033;
+    public static final int abc_toolbar_collapse_description = 2131755034;
+    public static final int androidx_camera_default_config_provider = 2131755038;
+    public static final int picture_all_audio = 2131755136;
+    public static final int picture_audio = 2131755137;
+    public static final int picture_audio_empty = 2131755138;
+    public static final int picture_audio_error = 2131755139;
+    public static final int picture_camera = 2131755140;
+    public static final int picture_camera_roll = 2131755141;
+    public static final int picture_camera_roll_num = 2131755142;
+    public static final int picture_cancel = 2131755143;
+    public static final int picture_choose_limit_seconds = 2131755144;
+    public static final int picture_choose_max_seconds = 2131755145;
+    public static final int picture_choose_min_seconds = 2131755146;
+    public static final int picture_completed = 2131755147;
+    public static final int picture_confirm = 2131755148;
+    public static final int picture_data_exception = 2131755149;
+    public static final int picture_data_null = 2131755150;
+    public static final int picture_done = 2131755151;
+    public static final int picture_done_front_num = 2131755152;
+    public static final int picture_empty = 2131755153;
+    public static final int picture_empty_audio_title = 2131755154;
+    public static final int picture_empty_title = 2131755155;
+    public static final int picture_error = 2131755156;
+    public static final int picture_gif_tag = 2131755157;
+    public static final int picture_go_setting = 2131755158;
+    public static final int picture_jurisdiction = 2131755159;
+    public static final int picture_know = 2131755160;
+    public static final int picture_long_chart = 2131755161;
+    public static final int picture_message_audio_max_num = 2131755162;
+    public static final int picture_message_max_num = 2131755163;
+    public static final int picture_message_video_max_num = 2131755164;
+    public static final int picture_min_img_num = 2131755165;
+    public static final int picture_min_video_num = 2131755166;
+    public static final int picture_not_crop_data = 2131755167;
+    public static final int picture_original_image = 2131755168;
+    public static final int picture_pause_audio = 2131755169;
+    public static final int picture_photo_camera = 2131755170;
+    public static final int picture_photo_pictures = 2131755171;
+    public static final int picture_photo_recording = 2131755172;
+    public static final int picture_photograph = 2131755173;
+    public static final int picture_play_audio = 2131755174;
+    public static final int picture_please = 2131755175;
+    public static final int picture_please_select = 2131755176;
+    public static final int picture_preview = 2131755177;
+    public static final int picture_preview_image_num = 2131755178;
+    public static final int picture_preview_num = 2131755179;
+    public static final int picture_prompt = 2131755180;
+    public static final int picture_prompt_content = 2131755181;
+    public static final int picture_quit_audio = 2131755182;
+    public static final int picture_record_video = 2131755183;
+    public static final int picture_recording_time_is_short = 2131755184;
+    public static final int picture_rule = 2131755185;
+    public static final int picture_save_error = 2131755186;
+    public static final int picture_save_success = 2131755187;
+    public static final int picture_select = 2131755188;
+    public static final int picture_send = 2131755189;
+    public static final int picture_send_num = 2131755190;
+    public static final int picture_stop_audio = 2131755191;
+    public static final int picture_take_picture = 2131755192;
+    public static final int picture_tape = 2131755193;
+    public static final int picture_video_error = 2131755194;
+    public static final int picture_video_toast = 2131755195;
+    public static final int picture_warning = 2131755196;
+    public static final int search_menu_title = 2131755217;
+    public static final int status_bar_notification_info_overflow = 2131755229;
+    public static final int ucrop_crop = 2131755279;
+    public static final int ucrop_gif_tag = 2131755280;
+    public static final int ucrop_label_edit_photo = 2131755281;
+    public static final int ucrop_label_original = 2131755282;
+    public static final int ucrop_menu_crop = 2131755283;
+    public static final int ucrop_rotate = 2131755284;
+    public static final int ucrop_scale = 2131755285;
+
+    private R.string() {
+    }
+}

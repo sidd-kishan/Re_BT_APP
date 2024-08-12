@@ -1,0 +1,83 @@
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  io.reactivex.FlowableSubscriber
+ *  io.reactivex.MaybeObserver
+ *  io.reactivex.disposables.Disposable
+ *  io.reactivex.internal.subscriptions.SubscriptionHelper
+ *  io.reactivex.plugins.RxJavaPlugins
+ *  org.reactivestreams.Subscription
+ */
+package io.reactivex.internal.operators.flowable;
+
+import io.reactivex.FlowableSubscriber;
+import io.reactivex.MaybeObserver;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.internal.subscriptions.SubscriptionHelper;
+import io.reactivex.plugins.RxJavaPlugins;
+import org.reactivestreams.Subscription;
+
+static final class FlowableElementAtMaybe.ElementAtSubscriber<T>
+implements FlowableSubscriber<T>,
+Disposable {
+    long count;
+    boolean done;
+    final MaybeObserver<? super T> downstream;
+    final long index;
+    Subscription upstream;
+
+    FlowableElementAtMaybe.ElementAtSubscriber(MaybeObserver<? super T> maybeObserver, long l) {
+        this.downstream = maybeObserver;
+        this.index = l;
+    }
+
+    public void dispose() {
+        this.upstream.cancel();
+        this.upstream = SubscriptionHelper.CANCELLED;
+    }
+
+    public boolean isDisposed() {
+        boolean bl = this.upstream == SubscriptionHelper.CANCELLED;
+        return bl;
+    }
+
+    public void onComplete() {
+        this.upstream = SubscriptionHelper.CANCELLED;
+        if (this.done) return;
+        this.done = true;
+        this.downstream.onComplete();
+    }
+
+    public void onError(Throwable throwable) {
+        if (this.done) {
+            RxJavaPlugins.onError((Throwable)throwable);
+            return;
+        }
+        this.done = true;
+        this.upstream = SubscriptionHelper.CANCELLED;
+        this.downstream.onError(throwable);
+    }
+
+    public void onNext(T t) {
+        if (this.done) {
+            return;
+        }
+        long l = this.count;
+        if (l == this.index) {
+            this.done = true;
+            this.upstream.cancel();
+            this.upstream = SubscriptionHelper.CANCELLED;
+            this.downstream.onSuccess(t);
+            return;
+        }
+        this.count = l + 1L;
+    }
+
+    public void onSubscribe(Subscription subscription) {
+        if (!SubscriptionHelper.validate((Subscription)this.upstream, (Subscription)subscription)) return;
+        this.upstream = subscription;
+        this.downstream.onSubscribe((Disposable)this);
+        subscription.request(Long.MAX_VALUE);
+    }
+}

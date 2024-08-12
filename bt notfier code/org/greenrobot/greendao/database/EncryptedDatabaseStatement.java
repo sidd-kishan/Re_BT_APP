@@ -1,0 +1,64 @@
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  net.sqlcipher.database.SQLiteStatement
+ *  org.greenrobot.greendao.database.DatabaseStatement
+ */
+package org.greenrobot.greendao.database;
+
+import net.sqlcipher.database.SQLiteStatement;
+import org.greenrobot.greendao.database.DatabaseStatement;
+
+public class EncryptedDatabaseStatement
+implements DatabaseStatement {
+    private final SQLiteStatement delegate;
+
+    public EncryptedDatabaseStatement(SQLiteStatement sQLiteStatement) {
+        this.delegate = sQLiteStatement;
+    }
+
+    public void bindBlob(int n, byte[] byArray) {
+        this.delegate.bindBlob(n, byArray);
+    }
+
+    public void bindDouble(int n, double d) {
+        this.delegate.bindDouble(n, d);
+    }
+
+    public void bindLong(int n, long l) {
+        this.delegate.bindLong(n, l);
+    }
+
+    public void bindNull(int n) {
+        this.delegate.bindNull(n);
+    }
+
+    public void bindString(int n, String string) {
+        this.delegate.bindString(n, string);
+    }
+
+    public void clearBindings() {
+        this.delegate.clearBindings();
+    }
+
+    public void close() {
+        this.delegate.close();
+    }
+
+    public void execute() {
+        this.delegate.execute();
+    }
+
+    public long executeInsert() {
+        return this.delegate.executeInsert();
+    }
+
+    public Object getRawStatement() {
+        return this.delegate;
+    }
+
+    public long simpleQueryForLong() {
+        return this.delegate.simpleQueryForLong();
+    }
+}
