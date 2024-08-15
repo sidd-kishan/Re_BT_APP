@@ -148,15 +148,6 @@ function toByteArray (b64) {
   return arr
 }
 
-
-Java.perform(function(){
-
-Java.use("com.lianhezhuli.btnotification.function.device.remotecamera.Preview$1").onPreviewFrame.overload('[B', 'android.hardware.Camera').implementation = function(bytearr,camera){
-	console.log("onPreviewFrame called: "+bytearr.length);
-	this.onPreviewFrame(bytearr,camera);
-}
-
-
 const colors = {
     colorize: (str, cc) => `\x1b${cc}${str}\x1b[0m`,
     red: str => colors.colorize(str, '[31m'),
@@ -168,72 +159,78 @@ const colors = {
 };
 
 
-var type=Java.use("com.lianhezhuli.btnotification.mtk.btconnection.BluetoothManager");
-type.sendCommandToRemote.overload('int','java.lang.String').implementation = function (n,cmd) {
+Java.perform(function(){
+	Java.use("com.lianhezhuli.btnotification.function.device.remotecamera.Preview$1").onPreviewFrame.overload('[B', 'android.hardware.Camera').implementation = function(bytearr,camera){
+		console.log("onPreviewFrame called: "+bytearr.length);
+		this.onPreviewFrame(bytearr,camera);
+	}
+
+	var type=Java.use("com.lianhezhuli.btnotification.mtk.btconnection.BluetoothManager");
+	type.sendCommandToRemote.overload('int','java.lang.String').implementation = function (n,cmd) {
 		console.log(colors.blue("sendCommandToRemote n:"+n+" cmd:"+cmd));
 		this.sendCommandToRemote(n,cmd);
-return;
-}
+		return;
+	}
 
-type.sendDataToRemote.overload('int','[B').implementation = function (n,data) {
+	type.sendDataToRemote.overload('int','[B').implementation = function (n,data) {
 		console.log(colors.green("sendDataToRemote n:"+n+" data:"+data.length));
 		this.sendDataToRemote(n,data);
-return;
-}
+		return;
+	}
 
-type.sendCAPCData.overload('[B').implementation = function (data) {
+	type.sendCAPCData.overload('[B').implementation = function (data) {
 		console.log(colors.cyan("sendCAPCData data:"+data.length));
 		var ret = this.sendCAPCData.overload('[B').call(this,data);
 		return ret;
-}
+	}
 
 
-var trigg = Java.use("com.lianhezhuli.btnotification.mtk.service.RemoteCameraService");
-trigg.onReceive.overload('android.content.Context', 'android.content.Intent').implementation = function (con,inti) {
-	var ext_dat = inti.getByteArrayExtra("EXTRA_DATA")
-	if(ext_dat[0]==49) {
-		console.log("Action: "+ext_dat[0])
-		var main_service = 0
-		Java.choose("com.lianhezhuli.btnotification.mtk.service.MainService", {
-			onMatch:function(instance){
-				main_service = instance
-				console.log("Found instance" + main_service);
-			},
-			onComplete:function() {
-				console.log("search done");
-			}
-		});
-		main_service.sendCAPCResult("1 0 ")
-		var btman_insta = 0
-		Java.choose("com.lianhezhuli.btnotification.mtk.btconnection.BluetoothManager", {
-			onMatch:function(instance){
-				btman_insta = instance
-				console.log("Found instance" + btman_insta);
-			},
-			onComplete:function() {
-				console.log("search done");
-			}
-		});
-		const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-		//while(1){
-		btman_insta.sendCommandToRemote(7,"4 1 "+(toByteArray(col_pat_2).length));
-		//main_service.sendCAPCData(toByteArray(col_pat_2));
-		var ret = main_service.sendCAPCData.overload('[B').call(main_service,toByteArray(col_pat_2));
-		delay(1000)
-		//}
-	} else if(ext_dat[0]==51) {
-		console.log("Action: "+ext_dat[0])
-		console.log(this.needPreview.value)
-		this.needPreview.value = true
-	} else if(ext_dat[0]==52){
-		console.log("Action: "+ext_dat[0])
-		const intentClass = Java.use("android.content.Intent");
-		var intent_c = intentClass.$new();
-		intent_c.setAction("com.lianhezhuli.RemoteCamera.CAPTURE");
-		con.sendBroadcast(intent_c)
-	} 
-	return;
-}
+	var trigg = Java.use("com.lianhezhuli.btnotification.mtk.service.RemoteCameraService");
+	trigg.onReceive.overload('android.content.Context', 'android.content.Intent').implementation = function (con,inti) {
+		var ext_dat = inti.getByteArrayExtra("EXTRA_DATA")
+		if(ext_dat[0]==49) {
+			console.log("Action: "+ext_dat[0])
+			var main_service = 0
+			Java.choose("com.lianhezhuli.btnotification.mtk.service.MainService", {
+				onMatch:function(instance){
+					main_service = instance
+					console.log("Found instance" + main_service);
+				},
+				onComplete:function() {
+					console.log("search done");
+				}
+			});
+			main_service.sendCAPCResult("1 0 ")
+			var btman_insta = 0
+			Java.choose("com.lianhezhuli.btnotification.mtk.btconnection.BluetoothManager", {
+				onMatch:function(instance){
+					btman_insta = instance
+					console.log("Found instance" + btman_insta);
+				},
+				onComplete:function() {
+					console.log("search done");
+				}
+			});
+			const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+			//while(1){
+			btman_insta.sendCommandToRemote(7,"4 1 "+(toByteArray(col_pat_2).length));
+			//main_service.sendCAPCData(toByteArray(col_pat_2));
+			var ret = main_service.sendCAPCData.overload('[B').call(main_service,toByteArray(col_pat_2));
+			delay(1000)
+			//}
+		} else if(ext_dat[0]==51) {
+			console.log("Action: "+ext_dat[0])
+			console.log(this.needPreview.value)
+			this.needPreview.value = true
+		} else if(ext_dat[0]==52){
+			console.log("Action: "+ext_dat[0])
+			const intentClass = Java.use("android.content.Intent");
+			var intent_c = intentClass.$new();
+			intent_c.setAction("com.lianhezhuli.RemoteCamera.CAPTURE");
+			con.sendBroadcast(intent_c)
+		} 
+		return;
+	}
 
-    });
+});
 	
