@@ -164,6 +164,7 @@ Java.perform(function(){
 		console.log("onPreviewFrame called: "+bytearr.length);
 		this.onPreviewFrame(bytearr,camera);
 	}
+	
 
 	var type=Java.use("com.lianhezhuli.btnotification.mtk.btconnection.BluetoothManager");
 	type.sendCommandToRemote.overload('int','java.lang.String').implementation = function (n,cmd) {
@@ -183,9 +184,7 @@ Java.perform(function(){
 		var ret = this.sendCAPCData.overload('[B').call(this,data);
 		return ret;
 	}
-
-
-	var trigg = Java.use("com.lianhezhuli.btnotification.mtk.service.RemoteCameraService");
+	/*var trigg = Java.use("com.lianhezhuli.btnotification.mtk.service.RemoteCameraService");
 	trigg.onReceive.overload('android.content.Context', 'android.content.Intent').implementation = function (con,inti) {
 		var ext_dat = inti.getByteArrayExtra("EXTRA_DATA")
 		if(ext_dat[0]==49) {
@@ -230,6 +229,6 @@ Java.perform(function(){
 			con.sendBroadcast(intent_c)
 		} 
 		return;
-	}
+	}*/
 });
 	

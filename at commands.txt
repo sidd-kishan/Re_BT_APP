@@ -1,0 +1,60 @@
+at
+OK
+
+AT+CKPD=?
+OK
+AT+VTS=?
++VTS: 0,1,2,3,4,5,6,7,8,9,A,B,C,D,#,*
+OK
+
+AT+CFUN=?
++CFUN: (0,1,4),(0,1)
+OK
+
+AT+CASP =?
++CASP: <1-2>,<id>[,<0-3>[,<1-25>[,<0-6>[,<0-7>]]]]
+OK
+
+AT+EADC=?
++EADC: (0,1)
+OK
+AT+ELCM=4
+OK
+AT+ELCM=0
+OK
+AT+ EKPD =?
++EKPD: (0,1)
+OK
+
+AT+ EKPD?
++EKPD: 0
+OK
+AT+ EKPD = 1
+OK
+AT+ ESAM =?
++ESAM: (0-2)
+OK
+
+AT+ EGMR =?
++EGMR: (0,1),(0-5,7-9)
+OK
+AT+ ESIMS ?
++ESIMS: 0
+OK
+
+AT+ ESLP =?
++ESLP: (0,1)
+OK
+AT+ ELNVRM =?
++ELNVRM: (1)
+OK
+AT+ ETEST=?
+OK
+
+AT+ EMBT=?
++EMBT: (0-5)
+OK
+AT
+OK
+AT+CNUM=?
+OK
