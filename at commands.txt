@@ -18,6 +18,12 @@ OK
 AT+EADC=?
 +EADC: (0,1)
 OK
+
+AT+ ELCM =?
++ELCM: (0-6)
+
+OK
+
 AT+ELCM=4
 OK
 AT+ELCM=0
